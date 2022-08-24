@@ -1,0 +1,48 @@
+/* rubik */
+
+@font-face {
+  font-family: RubikB;
+  src: url("../fonts/rubik/Rubik-Bold.ttf");
+}
+
+@font-face {
+  font-family: RubikR;
+  src: url("../fonts/rubik/Rubik-Regular.ttf");
+}
+
+@font-face {
+  font-family: RubikM;
+  src: url("../fonts/rubik/Rubik-Medium.ttf");
+}
+
+@font-face {
+  font-family: RubikBL;
+  src: url("../fonts/rubik/Rubik-Light.ttf");
+}
+
+@font-face {
+  font-family: RubikI;
+  src: url("../fonts/rubik/Rubik-Italic.ttf");
+}
+
+/* sinkin */
+
+@font-face {
+  font-family: SinkinB;
+  src: url("../fonts/sinkin/SinkinSans-700Bold.otf");
+}
+
+@font-face {
+  font-family: SinkinR;
+  src: url("../fonts/sinkin/SinkinSans-400Regular.otf");
+}
+
+@font-face {
+  font-family: SinkinM;
+  src: url("../fonts/sinkin/SinkinSans-500Medium.otf");
+}
+
+@font-face {
+  font-family: SinkinSm;
+  src: url("../fonts/sinkin/SinkinSans-600SemiBold.otf");
+}

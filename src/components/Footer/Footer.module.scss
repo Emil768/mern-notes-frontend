@@ -1,0 +1,25 @@
+.footer {
+  padding-top: 25px;
+  margin-top: 60px;
+  border-top: 1px solid #cccc;
+  flex: 0 0 auto;
+  &__content {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__info {
+    &_title {
+      margin-bottom: 10px;
+    }
+  }
+  &__links {
+    display: flex;
+  }
+  &__link {
+    height: 30px;
+    width: 30px;
+    opacity: 0.6;
+    display: flex;
+    margin-left: 10px;
+  }
+}
