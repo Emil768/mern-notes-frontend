@@ -1,0 +1,12 @@
+.notes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 30px;
+  flex: 1 0 auto;
+
+  &__category {
+    color: rgb(174, 189, 197);
+    margin-bottom: 40px;
+    font-size: 2.5rem;
+  }
+}

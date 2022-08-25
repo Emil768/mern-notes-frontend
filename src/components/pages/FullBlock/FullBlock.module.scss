@@ -1,0 +1,77 @@
+.fullBlock {
+  padding: 80px 100px;
+  border-radius: 20px;
+  box-shadow: rgba(102, 102, 102, 0.05) 0px 60px 30px;
+  background-color: rgb(255, 255, 255);
+  position: relative;
+
+  &__title {
+    font-weight: 800;
+    font-size: 42px;
+    line-height: 52px;
+    color: #000;
+    margin: 0 0 20px;
+  }
+
+  &__popup {
+    position: absolute;
+    right: 100px;
+    top: 100px;
+    span {
+      margin-left: 10px;
+      cursor: pointer;
+    }
+  }
+  &__info {
+    display: flex;
+    align-items: center;
+    & > span {
+      margin-left: 20px;
+    }
+  }
+  &__icon {
+    display: flex;
+    align-items: center;
+    svg {
+      margin-right: 5px;
+      fill: #aebdc5;
+    }
+  }
+
+  &__category {
+    color: #000;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  &__text {
+    font-size: 20px;
+    line-height: 36px;
+    color: #000;
+    margin: 30px 0 40px;
+  }
+  .author {
+    display: flex;
+    align-items: center;
+
+    &__avatar {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+    }
+
+    &__name {
+      margin-left: 10px;
+    }
+  }
+}
+
+.circle {
+  display: inline-block;
+  margin-right: 10px;
+  height: 10px;
+  width: 10px;
+  border-radius: 30px;
+  background-color: #aebdc5;
+}

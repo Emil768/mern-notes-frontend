@@ -1,12 +1,22 @@
 import React from "react";
 
 import styles from "./Note.module.scss";
-
+import { Link } from "react-router-dom";
 function Note() {
   return (
-    <div className={styles.note}>
+    <Link to="/notes/:id" className={styles.note}>
       <span className={styles.note__category}>
-        <i className={styles.circle}></i> Заметки
+        <span>
+          <i className={styles.circle}></i> Заметки
+        </span>
+        <span className={styles.author}>
+          <img
+            src="https://i.pinimg.com/originals/fd/17/51/fd175129e200299ec0dba35fcffd87fc.gif"
+            alt=""
+            className={styles.author__avatar}
+          />
+          <span className={styles.author__name}>Emilka228</span>
+        </span>
       </span>
       <h2 className={styles.note__title}>
         Как я оптимизировал нынешний проект
@@ -19,7 +29,7 @@ function Note() {
         вероятней всего, пароль с почтой на каком-нибудь хакерском форуме уже
         опубликовали.
       </p>
-    </div>
+    </Link>
   );
 }
 
