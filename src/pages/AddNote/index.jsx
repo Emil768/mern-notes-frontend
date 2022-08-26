@@ -2,13 +2,18 @@ import React, { useState } from "react";
 import SimpleMDE from "react-simplemde-editor";
 import styles from "./AddNote.module.scss";
 import "easymde/dist/easymde.min.css";
+
+import { useSelector } from "react-redux";
+import { selectIsAuth } from "../../redux/slices/auth";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
+
 function AddNote() {
+  const isAuth = useSelector((state) => Boolean(state.auth.data));
   const [text, setText] = useState("");
   const onChange = React.useCallback((value) => {
     setText(value);
   }, []);
 
-  console.log({ text });
   const options = React.useMemo(
     () => ({
       spellChecker: false,
@@ -23,6 +28,10 @@ function AddNote() {
     }),
     []
   );
+
+  if (!window.localStorage.getItem("token") && !isAuth) {
+    return <Navigate to="/" />;
+  }
 
   return (
     <div className={styles.addNote}>

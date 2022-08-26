@@ -2,19 +2,18 @@ import React from "react";
 
 import styles from "./Header.module.scss";
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { logout } from "../../redux/slices/auth";
 
 function Header() {
-  const isAuth = true;
+  const dispatch = useDispatch();
+  const isAuth = useSelector((state) => Boolean(state.auth.data));
 
-  const navigations = {
-    auth: [
-      { title: "Создать заметку", link: "/add-note" },
-      { title: "Выйти", link: "/" },
-    ],
-    noAuth: [
-      { title: "Войти", link: "/login" },
-      { title: "Зарегистрироваться", link: "/register" },
-    ],
+  const onClickLogout = () => {
+    if (window.confirm("Вы действительно хотите выйти?")) {
+      dispatch(logout());
+      window.localStorage.removeItem("token");
+    }
   };
 
   return (
@@ -46,21 +45,33 @@ function Header() {
               Заметки
             </Link>
           </li>
-          {isAuth
-            ? navigations.auth.map((item, index) => (
-                <li className={styles.list__item} key={index}>
-                  <Link className={styles.list__link} to={item.link}>
-                    {item.title}
-                  </Link>
-                </li>
-              ))
-            : navigations.noAuth.map((item, index) => (
-                <li className={styles.list__item} key={index}>
-                  <Link className={styles.list__link} to={item.link}>
-                    {item.title}
-                  </Link>
-                </li>
-              ))}
+          {isAuth ? (
+            <>
+              <li className={styles.list__item}>
+                <Link className={styles.list__link} to="/add-note">
+                  Создать заметку
+                </Link>
+              </li>
+              <li className={styles.list__item} onClick={onClickLogout}>
+                <Link className={styles.list__link} to="/">
+                  Выйти
+                </Link>
+              </li>
+            </>
+          ) : (
+            <>
+              <li className={styles.list__item}>
+                <Link className={styles.list__link} to="/auth/login">
+                  Войти
+                </Link>
+              </li>
+              <li className={styles.list__item}>
+                <Link className={styles.list__link} to="/auth/register">
+                  Зарегистрироваться
+                </Link>
+              </li>
+            </>
+          )}
         </ul>
       </div>
     </header>

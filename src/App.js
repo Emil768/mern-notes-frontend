@@ -1,24 +1,25 @@
 import "./styles/index.scss";
-
-import Header from "./components/Header";
-import Notes from "./components/pages/Notes";
-import Container from "./components/Container";
-import Footer from "./components/Footer";
-import FullBlock from "./components/pages/FullBlock";
-import AddNote from "./components/pages/AddNote";
-import Login from "./components/pages/Login";
-import Register from "./components/pages/Register";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { Header, Footer, Container } from "./components";
+import { Notes, AddNote, FullBlock, Login, Register } from "./pages";
 import { Routes, Route } from "react-router-dom";
+import { fethAuthMe } from "./redux/slices/auth";
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fethAuthMe());
+  }, []);
   return (
     <Container>
       <Header />
       <Routes>
         <Route path="/" element={<Notes />} />
         <Route path="/add-note" element={<AddNote />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+        <Route path="/auth/login" element={<Login />} />
+        <Route path="/auth/register" element={<Register />} />
         <Route path="/notes/:id" element={<FullBlock />} />
         <Route path="/category/:name" element={<Notes />} />
       </Routes>
