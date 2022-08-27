@@ -32,7 +32,7 @@ function FullBlock() {
       });
   }, []);
 
-  const isEditable = data && data.user._id === userData._id;
+  const isEditable = data && userData ? data.user._id === userData._id : null;
 
   const onClickRemove = () => {
     if (window.confirm("Вы действительно хотите удалить заметку?")) {
