@@ -11,7 +11,7 @@ function Note({ _id, title, text, category, user }) {
         </span>
         <span className={styles.author}>
           <img
-            src={`http://localhost:3001${user.avatarUrl}`}
+            src={`${process.env.REACT_APP_API_URL}${user.avatarUrl}`}
             alt=""
             className={styles.author__avatar}
           />

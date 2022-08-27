@@ -110,7 +110,7 @@ function FullBlock() {
               </span>
               <span className={styles.author}>
                 <img
-                  src={`http://localhost:3001${data.user.avatarUrl}`}
+                  src={`${process.env.REACT_APP_API_URL}${data.user.avatarUrl}`}
                   alt=""
                   className={styles.author__avatar}
                 />
