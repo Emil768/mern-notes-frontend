@@ -7,6 +7,10 @@ html,
 body {
   height: 100%;
 }
+#root,
+.Container {
+  height: 100%;
+}
 body {
   font-family: "Inter", sans-serif;
   background-color: #f7f8f8;
@@ -14,4 +18,9 @@ body {
 
 a {
   text-decoration: none;
+  color: #000;
+}
+
+form {
+  flex: 1 0 auto;
 }

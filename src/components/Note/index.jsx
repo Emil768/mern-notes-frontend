@@ -10,11 +10,17 @@ function Note({ _id, title, text, category, user }) {
           <i className={styles.circle}></i> {category}
         </span>
         <span className={styles.author}>
-          <img src={user.avatarUrl} alt="" className={styles.author__avatar} />
+          <img
+            src={`http://localhost:3001${user.avatarUrl}`}
+            alt=""
+            className={styles.author__avatar}
+          />
           <span className={styles.author__name}>{user.fullName}</span>
         </span>
       </span>
-      <h2 className={styles.note__title}>{title}</h2>
+      <h2 className={styles.note__title} title={title}>
+        {title}
+      </h2>
       <p className={styles.note__text}>{text}</p>
     </Link>
   );

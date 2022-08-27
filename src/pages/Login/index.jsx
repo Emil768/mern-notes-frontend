@@ -15,10 +15,6 @@ function Login() {
     handleSubmit,
     formState: { errors, isValid },
   } = useForm({
-    defaultValues: {
-      email: "aka3@list.ru",
-      password: "12345",
-    },
     mode: "onChange",
   });
 
@@ -26,7 +22,7 @@ function Login() {
     const data = await dispatch(fetchAuth(values));
 
     if (!data.payload) {
-      return alert("Не удалось авторизоваться");
+      return alert("Пользователь не найден");
     }
     if ("token" in data.payload) {
       window.localStorage.setItem("token", data.payload.token);
@@ -45,6 +41,7 @@ function Login() {
           <input
             type="email"
             className={styles.form__inpTitle}
+            placeholder="Введите логин (e-mail)"
             {...register("email", { required: "Укажите e-mail" })}
           />
           <input

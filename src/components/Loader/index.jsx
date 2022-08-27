@@ -32,6 +32,7 @@ const Loader = (props) => {
       viewBox="0 0 485 252"
       backgroundColor="#f3f3f3"
       foregroundColor="#ecebeb"
+      style={{ marginBottom: "20px", marginRight: "15px", flex: "1 0 auto" }}
       {...props}
     >
       <rect x="0" y="0" rx="20" ry="20" width="485" height="252" />

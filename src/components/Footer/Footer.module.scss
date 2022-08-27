@@ -1,11 +1,12 @@
 .footer {
-  padding-top: 25px;
+  padding-top: 15px;
   margin-top: 60px;
   border-top: 1px solid #cccc;
   flex: 0 0 auto;
   &__content {
     display: flex;
     justify-content: space-between;
+    padding: 20px 0;
   }
   &__info {
     &_title {
@@ -16,10 +17,34 @@
     display: flex;
   }
   &__link {
-    height: 30px;
-    width: 30px;
-    opacity: 0.6;
+    height: 35px;
+    width: 35px;
+
     display: flex;
     margin-left: 10px;
+
+    svg {
+      opacity: 0.6;
+      transition: all ease 0.2s;
+    }
+  }
+  .link {
+    &_telegram {
+      &:hover {
+        fill: #29b6f6;
+        opacity: 1;
+      }
+    }
+    &_vk {
+      &:hover {
+        fill: #1976d2;
+        opacity: 1;
+      }
+    }
+    &_git {
+      &:hover {
+        opacity: 1;
+      }
+    }
   }
 }

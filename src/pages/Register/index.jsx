@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Register.module.scss";
 
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { fethAuthRegister } from "../../redux/slices/auth";
@@ -16,14 +16,9 @@ function Register() {
     handleSubmit,
     formState: { errors, isValid },
   } = useForm({
-    defaultValues: {
-      fullName: "Emilka22",
-      email: "aka10@list.ru",
-      password: "12345",
-      file: "",
-    },
     mode: "onChange",
   });
+  const navigate = useNavigate();
 
   const onSubmit = async (values) => {
     try {
@@ -37,10 +32,11 @@ function Register() {
       );
 
       if (!user.payload) {
-        return alert("Не удалось авторизоваться");
+        return alert("Не удалось зарегистрироваться");
       }
       if ("token" in user.payload) {
         window.localStorage.setItem("token", user.payload.token);
+        navigate("/");
       }
     } catch (err) {
       console.log(err);
@@ -63,6 +59,7 @@ function Register() {
             placeholder="Введите никнейм"
             {...register("fullName", { required: "Укажите никнейм" })}
           />
+          {errors.fullName && <p>{errors.fullName.message}</p>}
           <input
             type="email"
             className={styles.register__inpTitle}

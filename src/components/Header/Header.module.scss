@@ -8,6 +8,11 @@
   &__logo {
     display: flex;
     align-items: center;
+    opacity: 0.6;
+    transition: all 0.2s;
+    &:hover {
+      opacity: 1;
+    }
   }
 
   &__title {
