@@ -9,6 +9,10 @@
     position: relative;
   }
 
+  &__contentLoading {
+    text-align: right;
+  }
+
   &__title {
     font-weight: 800;
     font-size: 42px;
@@ -19,18 +23,28 @@
 
   &__popup {
     position: absolute;
-    right: 100px;
-    top: 100px;
+    display: flex;
+    right: 30px;
+    top: 30px;
     span {
       margin-left: 10px;
       cursor: pointer;
     }
   }
+  .popup__item {
+    width: 20px;
+    height: 20px;
+    display: flex;
+  }
   &__info {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     & > span {
-      margin-left: 20px;
+      margin-right: 20px;
+    }
+    & > span:last-child {
+      margin-right: 0;
     }
   }
   &__icon {
@@ -56,6 +70,7 @@
     margin: 30px 0 40px;
     img {
       width: 100%;
+      margin: 20px 0;
     }
   }
   .author {
@@ -81,4 +96,75 @@
   width: 10px;
   border-radius: 30px;
   background-color: #aebdc5;
+}
+
+@media (max-width: 860px) {
+  .fullBlock {
+    &__content {
+      padding: 60px 65px;
+    }
+
+    &__info {
+      font-size: 14px;
+    }
+    &__title {
+      font-size: 35px;
+    }
+    &__text {
+      font-size: 18px;
+      line-height: 35px;
+      margin: 20px 0 20px;
+      text-align: justify;
+    }
+  }
+}
+
+@media (max-width: 540px) {
+  .fullBlock {
+    &__content {
+      padding: 60px 40px;
+    }
+
+    &__title {
+      font-size: 30px;
+      line-height: 42px;
+    }
+
+    &__text {
+      font-size: 16px;
+      line-height: 30px;
+    }
+  }
+}
+
+@media (max-width: 459px) {
+  .fullBlock {
+    &__info {
+      & > span {
+        margin-bottom: 10px;
+      }
+      & > span:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+@media (max-width: 349px) {
+  .fullBlock {
+    .popup__item {
+      width: 15px;
+      height: 15px;
+    }
+
+    &__title {
+      font-size: 25px;
+      line-height: 36px;
+    }
+
+    &__text {
+      font-size: 14px;
+      line-height: 27px;
+    }
+  }
 }

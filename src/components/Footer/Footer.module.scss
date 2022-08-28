@@ -6,7 +6,9 @@
   &__content {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 20px 0;
+    flex-wrap: wrap;
   }
   &__info {
     &_title {
@@ -22,6 +24,10 @@
 
     display: flex;
     margin-left: 10px;
+
+    &:first-child {
+      margin-left: 0;
+    }
 
     svg {
       opacity: 0.6;
@@ -45,6 +51,32 @@
       &:hover {
         opacity: 1;
       }
+    }
+  }
+}
+
+@media (max-width: 540px) {
+  .footer {
+    &__info {
+      font-size: 14px;
+    }
+  }
+}
+
+@media (max-width: 479px) {
+  .footer {
+    &__info {
+      margin-bottom: 10px;
+      line-height: 25px;
+    }
+  }
+}
+
+@media (max-width: 329px) {
+  .footer {
+    &__link {
+      width: 30px;
+      height: 30px;
     }
   }
 }

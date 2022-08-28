@@ -7,3 +7,9 @@
   flex-direction: column;
   height: 100%;
 }
+
+@media (max-width: 998px) {
+  .content {
+    padding: 20px;
+  }
+}

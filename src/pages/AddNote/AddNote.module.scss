@@ -27,7 +27,9 @@
   &__buttons {
     margin-top: 20px;
     align-self: flex-end;
-
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
     button,
     a {
       font-size: 16px;
@@ -55,6 +57,35 @@
     background-color: #dc3545;
     &:hover {
       background-color: #ae434d;
+    }
+  }
+}
+
+@media (max-width: 340px) {
+  .addNote {
+    &__title {
+      font-size: 30px;
+    }
+    &__category {
+      font-size: 14px;
+    }
+
+    &__buttons {
+      flex-direction: column;
+      align-self: auto;
+      button,
+      a {
+        margin-left: 0;
+        width: 100%;
+        text-align: center;
+      }
+
+      & > button {
+        margin-bottom: 10px;
+      }
+      a {
+        font-size: 14px;
+      }
     }
   }
 }

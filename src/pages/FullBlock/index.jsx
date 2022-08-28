@@ -5,9 +5,10 @@ import ReactMarkdown from "react-markdown";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 import axios from "../../axios";
-import Loader from "../../components/Loader";
+
 import { useDispatch, useSelector } from "react-redux";
 import { fetchRemoveNote } from "../../redux/slices/notes";
+import { ClipLoader } from "react-spinners";
 
 function FullBlock() {
   const [data, setData] = useState();
@@ -54,16 +55,29 @@ function FullBlock() {
 
   return (
     <main className={styles.fullBlock}>
-      <div className={styles.fullBlock__content}>
+      <div
+        className={
+          isLoading
+            ? [
+                styles.fullBlock__content,
+                styles.fullBlock__contentLoading,
+              ].join(" ")
+            : styles.fullBlock__content
+        }
+      >
         {isLoading ? (
-          <Loader isfull="true" />
+          <ClipLoader
+            loading={isLoading}
+            color="#39ca81"
+            className={styles.spinner}
+          />
         ) : (
           <>
             <h1 className={styles.fullBlock__title}>{data.title}</h1>
             {isEditable && (
               <div className={styles.fullBlock__popup}>
                 <Link to={`/notes/${id}/edit`}>
-                  <span>
+                  <span className={styles.popup__item}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="24"
@@ -74,7 +88,7 @@ function FullBlock() {
                     </svg>
                   </span>
                 </Link>
-                <span onClick={onClickRemove}>
+                <span className={styles.popup__item} onClick={onClickRemove}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -87,13 +101,15 @@ function FullBlock() {
               </div>
             )}
             <div className={styles.fullBlock__info}>
-              <i className={styles.circle}></i>{" "}
-              <Link
-                to={`/category/${data.category}`}
-                className={styles.fullBlock__category}
-              >
-                {data.category}
-              </Link>
+              <span>
+                <i className={styles.circle}></i>{" "}
+                <Link
+                  to={`/category/${data.category}`}
+                  className={styles.fullBlock__category}
+                >
+                  {data.category}
+                </Link>
+              </span>
               <span className={styles.fullBlock__icon}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -110,7 +126,7 @@ function FullBlock() {
               </span>
               <span className={styles.author}>
                 <img
-                  src={`${process.env.REACT_APP_API_URL}${data.user.avatarUrl}`}
+                  src={`${process.env.REACT_APP_API_URL}"${data.user.avatarUrl}`}
                   alt=""
                   className={styles.author__avatar}
                 />

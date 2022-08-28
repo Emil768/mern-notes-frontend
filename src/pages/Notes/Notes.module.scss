@@ -5,6 +5,9 @@
     display: flex;
     flex-wrap: wrap;
   }
+  &__contentLoading {
+    justify-content: flex-end;
+  }
 
   &__error {
     margin: 0 auto;

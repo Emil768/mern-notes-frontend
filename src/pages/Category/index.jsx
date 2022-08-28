@@ -1,12 +1,11 @@
 import React, { useEffect } from "react";
-
 import Note from "../../components/Note";
 
 import styles from "./Category.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fetchCategoryNotes } from "../../redux/slices/notes";
-import Loader from "../../components/Loader";
+import { ClipLoader } from "react-spinners";
 
 function Category() {
   const dispatch = useDispatch();
@@ -25,11 +24,17 @@ function Category() {
     <>
       {name && <h1 className={styles.notes__category}>#{name}</h1>}
       <main className={styles.notes}>
-        <div className={styles.notes__content}>
+        <div
+          className={
+            isLoading
+              ? [styles.notes__content, styles.notes__contentLoading].join(" ")
+              : styles.notes__content
+          }
+        >
           {!isError ? (
-            (isLoading ? [...Array(6)] : items).map((item, index) =>
+            (isLoading ? [...Array(1)] : items).map((item, index) =>
               isLoading ? (
-                <Loader key={index} />
+                <ClipLoader loading={isLoading} color="#39ca81" key={index} />
               ) : (
                 <Note {...item} key={item._id} />
               )

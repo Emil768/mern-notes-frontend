@@ -12,8 +12,6 @@
     padding: 40px;
   }
 
-  &__title {
-  }
   &__inputs {
     display: flex;
     flex-direction: column;
@@ -39,9 +37,6 @@
     }
   }
 
-  &__inpTitle {
-  }
-
   &__buttons {
     display: flex;
     flex-direction: column;
@@ -64,5 +59,21 @@
 
   &__buttonLogin {
     text-decoration: underline;
+  }
+}
+
+@media (max-width: 320px) {
+  .register {
+    &__inputs {
+      input {
+        font-size: 14px;
+      }
+    }
+    &__buttons {
+      button,
+      a {
+        font-size: 14px;
+      }
+    }
   }
 }
