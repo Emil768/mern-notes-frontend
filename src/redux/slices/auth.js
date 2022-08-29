@@ -23,6 +23,15 @@ export const fethAuthRegister = createAsyncThunk(
   }
 );
 
+//Регистрация
+export const fethAuthUploadAvatar = createAsyncThunk(
+  "auth/fethAuthUploadAvatar",
+  async (params) => {
+    const { data } = await axios.post("/uploads", params);
+    return data;
+  }
+);
+
 const initialState = {
   data: null,
   status: "loading",
@@ -56,6 +65,17 @@ const authSlice = createSlice({
       state.status = "loaded";
     },
     [fethAuthMe.rejected]: (state) => {
+      state.data = null;
+      state.status = "error";
+    },
+    [fethAuthUploadAvatar.pending]: (state) => {
+      state.status = "loading";
+    },
+    [fethAuthUploadAvatar.fulfilled]: (state, action) => {
+      state.data = action.payload;
+      state.status = "loaded";
+    },
+    [fethAuthUploadAvatar.rejected]: (state) => {
       state.data = null;
       state.status = "error";
     },

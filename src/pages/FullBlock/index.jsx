@@ -126,7 +126,7 @@ function FullBlock() {
               </span>
               <span className={styles.author}>
                 <img
-                  src={`${data.user.avatarUrl}`}
+                  src={`${data.user.avatarUrl.url}`}
                   alt=""
                   className={styles.author__avatar}
                 />

@@ -1,17 +1,24 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./Register.module.scss";
 
-import { Link, Navigate, resolvePath, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import { fethAuthRegister } from "../../redux/slices/auth";
+import {
+  fethAuthRegister,
+  fethAuthUploadAvatar,
+} from "../../redux/slices/auth";
 
-import axios from "../../axios";
+import { ClipLoader } from "react-spinners";
 
 function Register() {
   const dispatch = useDispatch();
-  const [image, setImage] = useState("");
-  const isAuth = useSelector((state) => Boolean(state.auth.data));
+  const { data, status } = useSelector((state) => state.auth);
+
+  const isLoading = Boolean(status === "loading");
+
+  console.log(status, status === "loading");
+
   const {
     register,
     handleSubmit,
@@ -23,22 +30,22 @@ function Register() {
 
   const onSubmit = async ({ fullName, email, password, avatarUrl }) => {
     try {
-      // const file = values.file[0];
-      // const formData = new FormData();
-      // formData.append("image", file);
-      // const { data } = await axios.post("/uploads", formData);
+      const formData = new FormData();
+      formData.append("image", avatarUrl[0]);
 
-      const field = {
+      const newAvatarUrl = await dispatch(fethAuthUploadAvatar(formData));
+
+      const fields = {
         fullName,
         email,
         password,
-        avatarUrl:
-          avatarUrl === ""
-            ? "https://media.baamboozle.com/uploads/images/6046/1541846791_543433"
-            : avatarUrl,
+        avatarUrl: {
+          public_id: newAvatarUrl.payload.public_id,
+          url: newAvatarUrl.payload.secure_url,
+        },
       };
 
-      const user = await dispatch(fethAuthRegister({ ...field }));
+      const user = await dispatch(fethAuthRegister(fields));
       if (!user.payload) {
         return alert("Не удалось зарегистрироваться");
       }
@@ -52,12 +59,13 @@ function Register() {
     }
   };
 
-  if (isAuth) {
+  if (data) {
     return <Navigate to="/" />;
   }
 
   return (
     <form className={styles.register} onSubmit={handleSubmit(onSubmit)}>
+      <ClipLoader loading={isLoading} color="#39ca81" />
       <div className={styles.register__content}>
         <h2 className={styles.register__title}>Регистрация</h2>
         <div className={styles.register__inputs}>
@@ -81,18 +89,10 @@ function Register() {
             {...register("password", { required: true })}
           />
           <input
-            type="text"
-            className={styles.register__password}
-            placeholder="Введите ссылку на аватарку"
-            {...register("avatarUrl")}
-          />
-          <span className={styles.sign}>(Не обязательно)</span>
-          {/* <input
             type="file"
-            
             className={styles.register__password}
-            {...register("file", { required: "Укажите файл" })}
-          /> */}
+            {...register("avatarUrl", { required: true })}
+          />
         </div>
         <div className={styles.register__buttons}>
           <button className={styles.register__submit} type="submit">
