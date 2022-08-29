@@ -3,7 +3,6 @@ import React from "react";
 import styles from "./Note.module.scss";
 import { Link } from "react-router-dom";
 function Note({ _id, title, text, category, user }) {
-  console.log(user);
   return (
     <Link to={`/notes/${_id}`} className={styles.note}>
       <span className={styles.note__info}>
