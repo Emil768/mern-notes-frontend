@@ -17,8 +17,6 @@ function Register() {
 
   const isLoading = Boolean(status === "loading");
 
-  console.log(status, status === "loading");
-
   const {
     register,
     handleSubmit,
