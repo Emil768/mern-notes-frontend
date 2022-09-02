@@ -65,6 +65,19 @@
   &__buttonLogin {
     text-decoration: underline;
   }
+  &__error {
+    color: #dd2727;
+    font-size: 14px;
+    margin-bottom: 20px;
+    svg {
+      height: 20px;
+      margin-right: 5px;
+    }
+  }
+  &__message {
+    display: flex;
+    align-items: center;
+  }
 }
 
 @media (max-width: 320px) {
@@ -79,6 +92,9 @@
       a {
         font-size: 14px;
       }
+    }
+    &__error {
+      font-size: 12px;
     }
   }
 }
