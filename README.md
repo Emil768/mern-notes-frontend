@@ -3,6 +3,7 @@
 ## 🛠 Технологии:
 - ReactJS 18
 - NodeJs
+- Redux-toolkit
 - React-redux
 - Axios
 - MongoDB (Для хранения данных)
