@@ -1,4 +1,4 @@
-# 🗒MERN Notes🗒
+# 📒MERN Notes📒
 
 ## 🛠 Технологии:
 - ReactJS 18
